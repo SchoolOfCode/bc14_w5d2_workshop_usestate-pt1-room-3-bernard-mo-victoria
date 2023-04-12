@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import "./App.css";
+import {bootcampers} from "./bootcampers"
 
 //Create a piece of state at the top of your `App` component called `count` with an initial state of `0`. If you need a reminder of how to declare state, check the [docs](https://react.dev/reference/react/useState)! 🍏
 
@@ -13,8 +14,12 @@ import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
+  const [bootcamperIndex, setBootcamperIndex] = useState(0);
   function handleCounterClick() {
     setCount(count + 1);
+  }
+  function handleBootcamperClick(){
+    setBootcamperIndex(Math.floor(Math.random()*bootcampers.length))
   }
   return (
     <main className="App">
@@ -26,8 +31,8 @@ function App() {
         </button>
       </section>
       <section>
-        <p className="randomBootcamper">BOOTCAMPER NAME</p>
-        <button className="randomBootcamperName">
+        <p className="randomBootcamper">{bootcampers[bootcamperIndex]}</p>
+        <button onClick = {handleBootcamperClick} className="randomBootcamperName">
           Click me for a random bootcamper!
         </button>
       </section>
